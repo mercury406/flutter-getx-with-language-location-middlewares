@@ -6,4 +6,6 @@ class AppConstants {
     "en": "English language",
     "oz": "Ўзбек тили"
   };
+
+  static const String baseUrl = "https://namozvaqti.uz/api";
 }

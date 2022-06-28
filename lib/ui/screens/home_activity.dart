@@ -51,7 +51,7 @@ class HomeActivity extends StatelessWidget {
                   style: TextStyle(color: Colors.blue, decoration: TextDecoration.underline),
                 ),
                 onTap: () {
-                  Get.toNamed(PageRoutes.regions);
+                  Get.toNamed(PageRoutes.location);
                 },
               ),
               const SizedBox(height: 24),

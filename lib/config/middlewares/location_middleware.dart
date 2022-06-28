@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map_pet/config/pages.dart';
-import 'package:flutter_map_pet/config/storage_keys.dart';
+import 'package:flutter_map_pet/data/controller/settings_controller.dart';
 import 'package:get/get.dart';
-import 'package:get_storage/get_storage.dart';
 
 class LocationMiddleware extends GetMiddleware{
 
@@ -11,9 +10,7 @@ class LocationMiddleware extends GetMiddleware{
 
   @override
   RouteSettings? redirect(String? route) {
-    GetStorage _storage = Get.find<GetStorage>();
-    int? cityId = _storage.read(StorageKeys.cityId);
-    debugPrint("$runtimeType => $cityId");
-    return cityId == null ? const RouteSettings(name: PageRoutes.regions) : null  ;
+    SettingsController settings = Get.find<SettingsController>();
+    return settings.city.value == 0 ? const RouteSettings(name: PageRoutes.location) : null;
   }
 }

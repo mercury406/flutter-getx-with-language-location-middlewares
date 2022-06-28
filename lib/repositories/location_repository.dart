@@ -1,46 +1,56 @@
+import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_map_pet/config/constants.dart';
 import 'package:flutter_map_pet/models/city_model.dart';
-import 'package:flutter_map_pet/models/district_model.dart';
+import 'package:flutter_map_pet/models/region_model.dart';
+import 'package:flutter_map_pet/repositories/interfaces/location_repository_interface.dart';
 
-class LocationRepository{
+class LocationRepository implements LocationRepositoryInterface {
+  late Dio _dio;
 
-  Future<List<RegionsModel>> getRegions() async {
-    await Future.delayed(const Duration(seconds: 2));
-    return _districts;
+  LocationRepository() {
+    BaseOptions _baseOptions = BaseOptions(
+      baseUrl: AppConstants.baseUrl,
+      responseType: ResponseType.json,
+    );
+    _dio = Dio(_baseOptions);
   }
 
-  final List<RegionsModel> _districts = [
-    RegionsModel(id: 1, titles: {
-      "ru": "Бухарская область",
-      "oz": "Бухоро вилояти",
-      "uz": "Buhoro viloyati",
-      "en": "Bukhara distrct"
-    }, cities: [
-      CityModel(id: 1,titles: {"ru": "Бухара", "oz": "Бухоро", "uz": "Buhoro", "en": "Bukhara"},),
-      CityModel(id: 2,titles: {"ru": "Бухара", "oz": "Бухоро", "uz": "Buhoro", "en": "Bukhara"},),
-      CityModel(id: 3,titles: {"ru": "Бухара", "oz": "Бухоро", "uz": "Buhoro", "en": "Bukhara"},),
-      CityModel(id: 4,titles: {"ru": "Бухара", "oz": "Бухоро", "uz": "Buhoro", "en": "Bukhara"},),
-    ]),
-    RegionsModel(id: 2, titles: {
-      "ru": "Самаркандская область",
-      "oz": "Самарканд вилояти",
-      "uz": "Samarqand viloyati",
-      "en": "Samarqand distrct"
-    }, cities: [
-      CityModel(id: 5,titles: {"ru": "Самарканд", "oz": "Самарканд", "uz": "Samarqand", "en": "Samarqand"},),
-      CityModel(id: 6,titles: {"ru": "Самарканд", "oz": "Самарканд", "uz": "Samarqand", "en": "Samarqand"},),
-      CityModel(id: 7,titles: {"ru": "Самарканд", "oz": "Самарканд", "uz": "Samarqand", "en": "Samarqand"},),
+  @override
+  Future<List<CityModel>> getCities() async {
+    var c = await getRemoteCities();
+    return c;
+  }
 
-    ]),
-    RegionsModel(id: 3, titles: {
-      "ru": "Хорезмская область",
-      "oz": "Хоразм вилояти",
-      "uz": "Xorazm viloyati",
-      "en": "Khorezm distrct"
-    }, cities: [
-      CityModel(id: 8,titles: {"ru": "Хорезм", "oz": "Хоразм", "uz": "Xorazm", "en": "Khorezm"},),
-      CityModel(id: 9,titles: {"ru": "Хорезм", "oz": "Хоразм", "uz": "Xorazm", "en": "Khorezm"},),
-      CityModel(id: 10,titles: {"ru": "Хорезм", "oz": "Хоразм", "uz": "Xorazm", "en": "Khorezm"},),
-      CityModel(id: 11,titles: {"ru": "Хорезм", "oz": "Хоразм", "uz": "Xorazm", "en": "Khorezm"},),
-    ])
-  ];
+  @override
+  Future<List<CityModel>> getLocalCities() async {
+    return <CityModel>[];
+  }
+
+  @override
+  Future<List<CityModel>> getRemoteCities() async {
+    try {
+      Response response = await _dio.get("/location");
+      List<dynamic> responseData = response.data;
+      List<CityModel> cities = [];
+      for (var item in responseData) {
+        cities.add(
+          CityModel(
+            id: item["id"],
+            titles: item["title"],
+            region: RegionModel(id: item["region"]["id"], titles: item["region"]["title"])
+          )
+        );
+      }
+      return cities;
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      return <CityModel>[];
+    }
+  }
+
+  @override
+  Future storeCities() async {
+    return [];
+  }
 }

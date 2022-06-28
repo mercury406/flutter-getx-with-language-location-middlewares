@@ -2,7 +2,7 @@ import 'package:flutter_map_pet/config/middlewares/language_middleware.dart';
 import 'package:flutter_map_pet/config/middlewares/location_middleware.dart';
 import 'package:flutter_map_pet/ui/screens/home_activity.dart';
 import 'package:flutter_map_pet/ui/screens/language_list.dart';
-import 'package:flutter_map_pet/ui/screens/regions_list.dart';
+import 'package:flutter_map_pet/ui/screens/locations_activity.dart';
 import 'package:get/get.dart';
 
 class AppPages {
@@ -13,8 +13,8 @@ class AppPages {
       page: () => const LanguageActivity(),
     ),
     GetPage(
-      name: PageRoutes.regions,
-      page: () => const RegionsActivity(),
+      name: PageRoutes.location,
+      page: () => LocationActivity(),
     ),
     GetPage(name: PageRoutes.home, page: () => const HomeActivity(), binding: null, middlewares: [
       LanguageMiddleware(),
@@ -25,7 +25,7 @@ class AppPages {
 
 class PageRoutes {
   static const String initial = HomeActivity.route;
-  static const String regions = RegionsActivity.route;
+  static const String location = LocationActivity.route;
   static const String language = LanguageActivity.route;
   static const String home = HomeActivity.route;
 }
