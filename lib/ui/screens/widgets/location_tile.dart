@@ -7,9 +7,9 @@ import 'package:flutter_map_pet/models/city_model.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-class RegionTile extends StatelessWidget {
+class LocationTile extends StatelessWidget {
   final CityModel city;
-  const RegionTile({Key? key, required this.city}) : super(key: key);
+  const LocationTile({Key? key, required this.city}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +21,7 @@ class RegionTile extends StatelessWidget {
       ),
       onTap: () async{
         GetStorage _storage = Get.find<GetStorage>();
-        _storage.write(StorageKeys.cityId, city.id);
+        _storage.write("cityId", city.id);
         Get.offAllNamed(PageRoutes.home);
       },
     );

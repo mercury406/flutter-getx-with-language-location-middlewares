@@ -1,11 +1,12 @@
 
-import 'package:flutter_map_pet/models/city_model.dart';
+
+import '../../models/district_model.dart';
 
 abstract class LocationRepositoryInterface{
-  Future<List<CityModel>> getRemoteCities();
-  Future<List<CityModel>> getLocalCities();
+  Future<List<RegionsModel>> getRemoteDistrictList();
+  Future<List<RegionsModel>> getLocalDistrictList();
 
-  Future<List<CityModel>> getCities();
-  Future<dynamic> storeCities();
+  Future<List<RegionsModel>> getDistrictList();
+  Future<dynamic> storeDistrictList();
 
 }
