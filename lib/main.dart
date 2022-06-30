@@ -6,6 +6,7 @@ import 'package:get_storage/get_storage.dart';
 
 void main() async {
   await GetStorage.init();
+  GetStorage().erase();
   runApp(const Application());
 }
 
@@ -13,7 +14,6 @@ class Application extends StatelessWidget {
   const Application({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    Get.put<GetStorage>(GetStorage());
     return GetMaterialApp(
       key: GlobalKey(),
       getPages: AppPages.all,

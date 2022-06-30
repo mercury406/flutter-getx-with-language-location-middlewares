@@ -14,6 +14,6 @@ class LocationMiddleware extends GetMiddleware{
     GetStorage _storage = Get.find<GetStorage>();
     int? cityId = _storage.read(StorageKeys.cityId);
     debugPrint("$runtimeType => $cityId");
-    return cityId == null ? const RouteSettings(name: PageRoutes.regions) : null  ;
+    return cityId == null ? const RouteSettings(name: PageRoutes.locations) : null  ;
   }
 }
