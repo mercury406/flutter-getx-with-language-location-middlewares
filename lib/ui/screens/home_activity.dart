@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_map_pet/config/helpers.dart';
 import 'package:flutter_map_pet/config/pages.dart';
 import 'package:flutter_map_pet/ui/screens/widgets/date_widget.dart';
-import 'package:flutter_map_pet/ui/screens/widgets/home_location_button.dart';
+import 'package:flutter_map_pet/ui/screens/widgets/home_location_tap.dart';
 import 'package:flutter_map_pet/ui/screens/widgets/time_widget.dart';
 
 import 'package:get/get.dart';
@@ -22,7 +22,7 @@ class HomeActivity extends GetView {
           child: Column(
             children: [
               const SizedBox(height: 16),
-              const LocationButton(),
+              const LocationTab(),
               const SizedBox(height: 16),
               SlideCountdownSeparated(
                 height: 72,

@@ -7,8 +7,8 @@ import 'package:flutter_map_pet/repositories/location_repository.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-class LocationButton extends StatelessWidget {
-  const LocationButton({Key? key}) : super(key: key);
+class LocationTab extends StatelessWidget {
+  const LocationTab({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,10 @@ class LocationButton extends StatelessWidget {
                     ],
                   ),
                   Expanded(child: Container()),
-                  MaterialButton(
+                  TextButton(
+                    style: TextButton.styleFrom(
+                      padding: EdgeInsets.symmetric(horizontal: 0)
+                    ),
                       onPressed: (){Get.toNamed(PageRoutes.language);},
                       child: Text(storage.read(StorageKeys.language).toString().toUpperCase(), style: AppHelpers.generalStyle,),
                   ),
