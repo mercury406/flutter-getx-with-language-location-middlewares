@@ -16,8 +16,9 @@ class LanguageTile extends StatelessWidget {
       child: ListTile(
         title: Text(title, style: const TextStyle(fontWeight: FontWeight.w800),),
       ),
-      onTap: () {
-        _storage.write(StorageKeys.language, language);
+      onTap: () async{
+        await _storage.write(StorageKeys.language, language);
+        Get.updateLocale(Locale(language));
         Get.offAllNamed(PageRoutes.home);
       },
     );

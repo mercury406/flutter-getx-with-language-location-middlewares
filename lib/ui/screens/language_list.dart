@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map_pet/config/constants.dart';
 import 'package:flutter_map_pet/ui/screens/widgets/language_tile.dart';
+import 'package:get/get.dart';
 
 class LanguageActivity extends StatelessWidget {
   static const String route = "/language";
@@ -16,7 +17,7 @@ class LanguageActivity extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Выберите язык"),
+        title: Text("choose_lang".tr),
         backgroundColor: Colors.green,
       ),
       body: Container(

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map_pet/config/constants.dart';
+import 'package:flutter_map_pet/config/storage_keys.dart';
 import 'package:flutter_map_pet/data/local_storage/city/city_dao.dart';
 import 'package:flutter_map_pet/data/local_storage/city/city_entity.dart';
 import 'package:flutter_map_pet/data/local_storage/database.dart';
 import 'package:flutter_map_pet/models/city_view_model.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class LocationRepository extends GetConnect {
 
@@ -44,5 +46,15 @@ class LocationRepository extends GetConnect {
       debugPrint("Exception $runtimeType: $e");
       return [];
     }
+  }
+
+  Future<CityViewModel> getCurrentSelectedCity() async {
+    final database = await $FloorAppDatabase.databaseBuilder('app_database.db').build();
+    CityDao dao = database.cityDao;
+    GetStorage storage = Get.find<GetStorage>();
+
+    CityEntity? cityEntity =  await dao.fetchCityById(storage.read(StorageKeys.cityId));
+    return CityViewModel.fromEntity(cityEntity!, storage.read(StorageKeys.language));
+
   }
 }

@@ -39,7 +39,7 @@ class _LocationActivityState extends State<LocationActivity> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Выберите область"),
+        title: Text("choose_location".tr),
         backgroundColor: Colors.green,
       ),
       body: Column(
@@ -51,7 +51,7 @@ class _LocationActivityState extends State<LocationActivity> {
               maxLines: 1,
               decoration: InputDecoration(
                 border: const OutlineInputBorder(),
-                label: const Text("Искать город"),
+                label: Text("find_city".tr),
                 prefixIcon: const Icon(Icons.search),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.close),

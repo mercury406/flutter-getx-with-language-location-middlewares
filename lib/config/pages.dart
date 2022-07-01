@@ -17,7 +17,7 @@ class AppPages {
       name: PageRoutes.locations,
       page: () => const LocationActivity(),
     ),
-    GetPage(name: PageRoutes.home, page: () => HomeActivity(), binding: null, middlewares: [
+    GetPage(name: PageRoutes.home, page: () => const HomeActivity(), binding: null, middlewares: [
       LanguageMiddleware(),
       LocationMiddleware(),
     ]),

@@ -8,25 +8,17 @@ class DateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String gregorianDate = "${gregorian.day} iyun ${gregorian.year}";
-    String muslimicDate = "${muslimic.day} zulqada ${muslimic.year}";
-    return Container(
-      width: Get.width,
-      padding: const EdgeInsets.all(8),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          border: Border.all(width: 2),
-          color: Colors.white,
-          boxShadow: const [
-            BoxShadow(blurRadius: 2.0)
-          ]
-      ),
-      child: Column(
-        children: [
-          Text(gregorianDate , style: AppHelpers.generalStyle.copyWith(fontSize: 32, color: Colors.black),),
-          Text(muslimicDate, style: AppHelpers.generalStyle.copyWith(fontSize: 24, color: Colors.black),)
-        ],
-      ),
+    String qamarMonth = "qamar_${DateTime(1443, 12, 1).month - 1}".tr;
+    String gregMonth = "greg_${DateTime.now().month - 1}".tr;
+
+    String gregorianDate = "${gregorian.day} $gregMonth ${gregorian.year}";
+    String muslimicDate = "${muslimic.day} $qamarMonth ${muslimic.year}";
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        Text(gregorianDate , style: AppHelpers.generalStyle.copyWith(fontSize: 14, color: Colors.white),),
+        Text(muslimicDate, style: AppHelpers.generalStyle.copyWith(fontSize: 14, color: Colors.white),)
+      ],
     );
   }
 }
