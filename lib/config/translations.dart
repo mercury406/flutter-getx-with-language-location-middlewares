@@ -5,6 +5,7 @@ class AppTranslations extends Translations{
   @override
   Map<String, Map<String, String>> get keys => {
     'en_US': {
+      'no_data_error': 'There is no time data for day. Please turn on WiFi/Internet and Reopen App',
       'find_qibla': 'Find the qiblah',
       'choose_location': 'Choose city',
       'choose_lang': 'Choose lang',
@@ -48,6 +49,7 @@ class AppTranslations extends Translations{
       'qamar_11' : "Dhul Hijjah"
     },
     'uz_UZ': {
+      'no_data_error': 'Bugungi sanaga namoz vaqtlar yo\'q. WiFi yoqi Internetni yoqing va dasturni oching',
       'find_qibla': 'Qiblani topish',
       'choose_location': 'Shaharni tanlang',
       'choose_lang': 'Tilni tanlang',
@@ -91,6 +93,7 @@ class AppTranslations extends Translations{
       'qamar_11' : 'Zulhijja'
   },
     'oz_UZ': {
+      'no_data_error': 'Бугунги санага намоз ваҚтлар топилмади. WiFi йоки интернетни йокинг ва дастурни очинг',
       'find_qibla': 'Қиблани топиш',
       'choose_location': 'Шахарни танланг',
       'choose_lang': 'Тилни танланг',
@@ -134,6 +137,7 @@ class AppTranslations extends Translations{
       'qamar_11' : "Зулҳижжа"
     },
     'ru_RU': {
+      'no_data_error': 'Время намаза на сегодня не найдено. Попробуйте включить WiFi или интернет и перезапустите приложение ',
       'find_qibla': 'Найти киблу',
       'choose_location': 'Искать город',
       'choose_lang': 'Выберите язык',

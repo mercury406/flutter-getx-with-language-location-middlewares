@@ -16,7 +16,7 @@ class Application extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     GetStorage _storage = Get.put<GetStorage>(GetStorage());
-    String lang = _storage.read(StorageKeys.language) ?? "uz";
+    String lang = _storage.read(StorageKeys.language);
     return GetMaterialApp(
       key: GlobalKey(),
       getPages: AppPages.all,
@@ -25,6 +25,7 @@ class Application extends StatelessWidget {
       initialBinding: AppBindings(),
       translations: AppTranslations(),
       locale: Locale(lang),
+      fallbackLocale: const Locale("uz"),
     );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:flutter_map_pet/config/bindings/home_binding.dart';
 import 'package:flutter_map_pet/config/middlewares/language_middleware.dart';
 import 'package:flutter_map_pet/config/middlewares/location_middleware.dart';
 import 'package:flutter_map_pet/ui/screens/home_activity.dart';
@@ -17,16 +18,23 @@ class AppPages {
       name: PageRoutes.locations,
       page: () => const LocationActivity(),
     ),
-    GetPage(name: PageRoutes.home, page: () => const HomeActivity(), binding: null, middlewares: [
-      LanguageMiddleware(),
-      LocationMiddleware(),
-    ]),
-    GetPage(name: PageRoutes.qibla, page: () => QiblaActivity()),
+    GetPage(
+        name: PageRoutes.home,
+        page: () => HomeActivity(),
+        binding: HomeBinding(),
+        middlewares: [
+          LanguageMiddleware(),
+          LocationMiddleware(),
+        ]),
+    GetPage(
+      name: PageRoutes.qibla,
+      page: () => QiblaActivity(),
+    ),
   ];
 }
 
 class PageRoutes {
-  static const String initial = HomeActivity.route;
+  static const String initial = home;
   static const String locations = LocationActivity.route;
   static const String language = LanguageActivity.route;
   static const String home = HomeActivity.route;

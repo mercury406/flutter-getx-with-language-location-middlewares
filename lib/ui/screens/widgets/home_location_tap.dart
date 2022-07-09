@@ -7,7 +7,7 @@ import 'package:flutter_map_pet/repositories/location_repository.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
-class LocationTab extends StatelessWidget {
+class LocationTab extends GetView {
   const LocationTab({Key? key}) : super(key: key);
 
   @override
@@ -33,7 +33,7 @@ class LocationTab extends StatelessWidget {
                   Expanded(child: Container()),
                   TextButton(
                     style: TextButton.styleFrom(
-                      padding: EdgeInsets.symmetric(horizontal: 0)
+                      padding: const EdgeInsets.symmetric(horizontal: 0)
                     ),
                       onPressed: (){Get.toNamed(PageRoutes.language);},
                       child: Text(storage.read(StorageKeys.language).toString().toUpperCase(), style: AppHelpers.generalStyle,),

@@ -11,14 +11,16 @@ import 'package:flutter_map_pet/data/local_storage/city/city_entity.dart';
       onDelete: ForeignKeyAction.cascade,
     )
   ],
+  primaryKeys: [
+    "cityId",
+    "date"
+  ]
 )
 class TimeEntity {
-  @PrimaryKey(autoGenerate: true)
   final int id;
   final int cityId;
   final String gregorianDate;
   final String qamarDate;
-
   final String bomdod;
   final String quyosh;
   final String peshin;
@@ -43,10 +45,10 @@ class TimeEntity {
   factory TimeEntity.fromMap(Map map){
     return TimeEntity(
       id: map["id"],
-      cityId: map["cityId"],
-      gregorianDate: map["gregorianDate"],
-      qamarDate: map["qamarDate"],
-      bomdod: map["bomdod"],
+      cityId: map["city_id"],
+      gregorianDate: map["date"],
+      qamarDate: map["qamar_date"],
+      bomdod: map["tong"],
       quyosh: map["quyosh"],
       peshin: map["peshin"],
       asr: map["asr"],
@@ -54,4 +56,5 @@ class TimeEntity {
       hufton: map["hufton"],
     );
   }
+
 }
